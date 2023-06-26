@@ -6,7 +6,7 @@ public class EmployeeDTO {
     private int age;
     private String address;
     private double salary;
-    //giabao
+    //giabao1
     public Long getId() {
         return id;
     }
