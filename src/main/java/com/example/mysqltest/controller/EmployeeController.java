@@ -17,22 +17,23 @@ public class EmployeeController {
         this.repository = repository;
     }
 
-    //yes
     @GetMapping("/")
-    public List<Employee> getEmployees(){
+    public List<Employee> getEmployees() {
         return service.findAll();
     }
+
     @PostMapping("/add")
-    public Employee addEmployee(@RequestBody Employee employee){
+    public Employee addEmployee(@RequestBody Employee employee) {
         return service.save(employee);
     }
-    @DeleteMapping("/delete/{+id}")
-    public void removeEmployee(@RequestParam Long id){
+
+    @DeleteMapping("/delete/{id}")
+    public void removeEmployee(@PathVariable Long id) {
         service.deleteById(id);
     }
 
-    @PutMapping("/update/{+id}")
-    public Employee updateEmployee(@RequestParam Long id, @RequestBody Employee employee){
-        return service.updateById(employee,id);
+    @PutMapping("/update/{id}")
+    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        return service.updateById(employee, id);
     }
 }
