@@ -6,7 +6,6 @@ import com.example.mysqltest.repository.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class EmployeeController {
@@ -40,8 +39,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/salary/{id}")
-    public double findSalaryById(@PathVariable Long id, Employee employee) {
-        employee = service.findById(id);
+    public double findSalaryById(@PathVariable Long id) {
+        Employee employee = service.findById(id);
         return service.findSalaryById(employee);
     }
 }
