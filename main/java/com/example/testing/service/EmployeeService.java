@@ -50,12 +50,9 @@ public class EmployeeService {
         return salaryDTO;
     }
 
-    public String removeById(long id) {
+    public void removeById(long id) {
         if (existID(id)) {
             employee.removeIf(idx -> Objects.equals(idx.getId(), id));
-            return "Employee deleted.";
-        } else {
-            return null;
         }
     }
 
