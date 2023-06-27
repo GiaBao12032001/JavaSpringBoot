@@ -3,6 +3,7 @@ package com.example.mysqltest.employeeservice;
 import com.example.mysqltest.entity.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
     List<Employee> findAll();
@@ -12,4 +13,8 @@ public interface EmployeeService {
     void deleteById(Long id);
 
     Employee updateById(Employee employee, Long id);
+
+    Employee findById(Long id);
+
+    double findSalaryById(Employee employee);
 }
