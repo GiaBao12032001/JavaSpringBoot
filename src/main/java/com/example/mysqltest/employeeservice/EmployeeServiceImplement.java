@@ -2,11 +2,10 @@ package com.example.mysqltest.employeeservice;
 
 import com.example.mysqltest.entity.Employee;
 import com.example.mysqltest.repository.EmployeeRepository;
-import org.hibernate.ObjectNotFoundException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImplement implements EmployeeService {
@@ -39,10 +38,8 @@ public class EmployeeServiceImplement implements EmployeeService {
 
     @Override
     public Employee findById(Long id) {
-        if (repository.findById(id).isEmpty()) {
-            throw new ObjectNotFoundException(id, "id");
-        }
-        return repository.findById(id).get();
+        Optional<Employee> value = repository.findById(id);
+        return value.orElse(null);
     }
 
     @Override
