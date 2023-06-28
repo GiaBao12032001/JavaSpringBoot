@@ -32,8 +32,13 @@ public class EmployeeServiceImplement implements EmployeeService {
 
     @Override
     public Employee updateById(Employee employee, Long id) {
-        repository.deleteById(id);
-        return repository.save(employee);
+        Optional<Employee> value = repository.findById(id);
+        if (value.isPresent()) {
+            repository.deleteById(id);
+            return repository.save(employee);
+        } else {
+            return null;
+        }
     }
 
     @Override
