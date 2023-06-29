@@ -29,6 +29,12 @@ public class EmployeeServiceImplement implements EmployeeService {
         if (employee.getAge() < 18) {
             throw new ApplicationException(406, "Age must be 18+");
         }
+        if (employee.getName().equals("") || employee.getName().isEmpty()) {
+            throw new ApplicationException(406, "Name must not be null");
+        }
+        if (employee.getAddress().equals("") || employee.getAddress().isEmpty()) {
+            throw new ApplicationException(406, "Address must not be empty");
+        }
         return repository.save(employee);
     }
 
