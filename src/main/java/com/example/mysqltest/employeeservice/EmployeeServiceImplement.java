@@ -1,6 +1,7 @@
 package com.example.mysqltest.employeeservice;
 
 import com.example.mysqltest.entity.Employee;
+import com.example.mysqltest.exception.ApplicationException;
 import com.example.mysqltest.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,12 @@ public class EmployeeServiceImplement implements EmployeeService {
 
     @Override
     public Employee save(Employee employee) {
+        if (employee.getId() == null) {
+            throw new ApplicationException(406, "Invalid ID");
+        }
+        if (employee.getAge() < 18) {
+            throw new ApplicationException(406, "Age must be 18+");
+        }
         return repository.save(employee);
     }
 
